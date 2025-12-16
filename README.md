@@ -68,7 +68,7 @@ frontend/  React + Vite single page app for uploading PDFs and polling signing s
    npm run dev
    ```
 
-3. Open `http://localhost:5173` and upload a PDF. Provide the signer’s email plus any required identity fields (name, etc.) and submit; the UI polls the backend until Goodflag reports the workflow as finished, then exposes a download link. A default signature field is placed at the top-right of the last PDF page automatically—adjust by editing `DEFAULT_FIELD` in `backend/goodflag.ts`.
+3. Open `http://localhost:5173` and upload a PDF. Provide the signer’s email plus any required identity fields (name, etc.) and submit; the UI polls the backend until Goodflag reports the workflow as finished, then exposes a download link. A default signature field is placed at the top-right of the last PDF page automatically—tweak the coordinates via the `SIGNATURE_FIELD_*` env vars if needed.
 
 To build a static bundle:
 

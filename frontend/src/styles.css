@@ -1,0 +1,127 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  color: #0f172a;
+  background-color: #f1f5f9;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #f1f5f9;
+}
+
+main.app-shell {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 2rem;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.panel {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 16px;
+  box-shadow: 0 15px 35px rgb(15 23 42 / 8%);
+}
+
+.status-panel {
+  border-top: 4px solid #2563eb;
+}
+
+h1,
+h2 {
+  margin-top: 0;
+}
+
+.muted {
+  color: #475569;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-weight: 600;
+}
+
+input[type="text"],
+input[type="file"] {
+  border: 1px solid #cbd5f5;
+  border-radius: 8px;
+  padding: 0.65rem 0.85rem;
+  font-size: 1rem;
+}
+
+button.primary,
+a.primary {
+  align-self: flex-start;
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 999px;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+button.primary:disabled {
+  background: #94a3b8;
+  cursor: not-allowed;
+}
+
+button.primary:not(:disabled):hover,
+a.primary:hover {
+  background: #1d4ed8;
+}
+
+dt {
+  font-weight: 700;
+  color: #0f172a;
+}
+
+dd {
+  margin: 0 0 0.75rem;
+  color: #1e293b;
+}
+
+.status.completed {
+  color: #0f9d58;
+  font-weight: 700;
+}
+
+.status.pending {
+  color: #f97316;
+  font-weight: 700;
+}
+
+.status.error,
+.error {
+  color: #dc2626;
+  font-weight: 700;
+}
+
+.message {
+  margin-top: 1rem;
+  font-weight: 600;
+}
+
+@media (min-width: 768px) {
+  main.app-shell {
+    flex-direction: row;
+  }
+  .panel {
+    flex: 1;
+  }
+}

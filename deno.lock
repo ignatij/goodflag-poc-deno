@@ -1,0 +1,30 @@
+{
+  "version": "5",
+  "specifiers": {
+    "jsr:@std/crypto@^1.0.5": "1.0.5",
+    "jsr:@std/dotenv@~0.225.5": "0.225.5",
+    "jsr:@std/encoding@^1.0.10": "1.0.10"
+  },
+  "jsr": {
+    "@std/crypto@1.0.5": {
+      "integrity": "0dcfbb319fe0bba1bd3af904ceb4f948cde1b92979ec1614528380ed308a3b40"
+    },
+    "@std/dotenv@0.225.5": {
+      "integrity": "9ce6f9d0ec3311f74a32535aa1b8c62ed88b1ab91b7f0815797d77a6f60c922f"
+    },
+    "@std/encoding@1.0.10": {
+      "integrity": "8783c6384a2d13abd5e9e87a7ae0520a30e9f56aeeaa3bdf910a3eaaf5c811a1"
+    }
+  },
+  "remote": {
+    "https://deno.land/std@0.208.0/encoding/_util.ts": "f368920189c4fe6592ab2e93bd7ded8f3065b84f95cd3e036a4a10a75649dcba",
+    "https://deno.land/std@0.208.0/encoding/hex.ts": "a384101d02cd87036c708f540825feb5b073c8527a00d635e48b2e69c992a5f9"
+  },
+  "workspace": {
+    "dependencies": [
+      "jsr:@std/crypto@^1.0.5",
+      "jsr:@std/dotenv@~0.225.5",
+      "jsr:@std/encoding@^1.0.10"
+    ]
+  }
+}

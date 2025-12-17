@@ -76,6 +76,7 @@ async function handleSign(req: Request): Promise<Response> {
     return jsonResponse({ error: "Signer email is required" }, { status: 400 });
   }
 
+  const phoneNumber = getTextValue(formData.get("signer_phone"));
   const signerInfo = {
     email: signerEmail,
     firstName: getTextValue(formData.get("signer_first_name")),
@@ -84,9 +85,11 @@ async function handleSign(req: Request): Promise<Response> {
     comments: getTextValue(formData.get("signer_comments")),
     consentPageId: getTextValue(formData.get("signer_consent_page_id")),
     userId: getTextValue(formData.get("signer_user_id")),
+    ...(phoneNumber ? { phoneNumber } : {}),
   };
 
-  const workflowName = getTextValue(formData.get("workflow_name")) ||
+  const workflowName =
+    getTextValue(formData.get("workflow_name")) ||
     file.name ||
     "Document signature workflow";
 
@@ -120,7 +123,8 @@ async function handleSign(req: Request): Promise<Response> {
       jobId: job.id,
       status: job.status,
       workflowId: workflow.id,
-      workflowStatus: startedWorkflow.workflowStatus ?? workflow.workflowStatus ?? "started",
+      workflowStatus:
+        startedWorkflow.workflowStatus ?? workflow.workflowStatus ?? "started",
       fileName: job.fileName,
     });
   } catch (error) {
@@ -249,4 +253,5 @@ Deno.serve({ port: config.port }, (req: Request) =>
   handler(req).catch((error) => {
     console.error("Unhandled server error", error);
     return jsonResponse({ error: "Internal server error" }, { status: 500 });
-  }));
+  }),
+);

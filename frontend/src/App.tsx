@@ -22,6 +22,7 @@ export default function App() {
   const [signerEmail, setSignerEmail] = useState("");
   const [signerFirstName, setSignerFirstName] = useState("");
   const [signerLastName, setSignerLastName] = useState("");
+  const [signerPhone, setSignerPhone] = useState("");
   const [status, setStatus] = useState<SigningStatus | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
@@ -73,6 +74,10 @@ export default function App() {
         if (workflowName) {
           formData.set("workflow_name", workflowName);
         }
+        const trimmedPhone = signerPhone.trim();
+        if (trimmedPhone) {
+          formData.set("signer_phone", trimmedPhone);
+        }
         const response = await fetch(apiUrl("/api/sign"), {
           method: "POST",
           body: formData,
@@ -94,7 +99,14 @@ export default function App() {
         setIsSubmitting(false);
       }
     },
-    [file, signerEmail, signerFirstName, signerLastName, workflowName],
+    [
+      file,
+      signerEmail,
+      signerFirstName,
+      signerLastName,
+      signerPhone,
+      workflowName,
+    ],
   );
 
   const downloadHref = useMemo(() => {
@@ -155,6 +167,15 @@ export default function App() {
               value={signerLastName}
               placeholder="Towne"
               onChange={(event) => setSignerLastName(event.target.value)}
+            />
+          </label>
+          <label className="field">
+            <span>Signer Phone Number (optional)</span>
+            <input
+              type="tel"
+              value={signerPhone}
+              placeholder="+33 6 12 34 56 78"
+              onChange={(event) => setSignerPhone(event.target.value)}
             />
           </label>
           <button
